@@ -1,0 +1,10 @@
+{
+  "name": "react-chat-app",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server",
+    "client": "npm run dev --prefix client",
+    "server": "npm start --prefix server",
+    "dev": "npx concurrently \"npm run server\" \"npm run client\""
+  }
+}

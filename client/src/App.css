@@ -1,0 +1,103 @@
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  background: #e9edf3;
+  color: #1f2a37;
+}
+
+.chat {
+  max-width: 760px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: #eef1f6;
+}
+
+.chat-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 20px; background: #fff; border-bottom: 1px solid #d9dfe8;
+}
+.chat-header h1 { font-size: 16px; margin: 0; }
+.chat-header p { margin: 2px 0 0; font-size: 12px; color: #6b7686; }
+.status { font-size: 12px; padding: 4px 10px; border-radius: 999px; }
+.status.on { background: #dcf5e4; color: #1a7f3c; }
+.status.off { background: #eceff3; color: #6b7686; }
+
+.thread { flex: 1; overflow-y: auto; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px; }
+.empty { margin: auto; color: #6b7686; font-size: 14px; }
+
+.message { display: flex; gap: 10px; align-items: flex-start; }
+.avatar {
+  flex: none; width: 36px; height: 36px; border-radius: 50%;
+  display: grid; place-items: center; font-size: 12px; font-weight: 700; color: #fff; background: #5b8def;
+}
+.avatar[data-u="Alan"] { background: #d9534f; }
+.avatar[data-u="Bob"] { background: #8bb92e; }
+.avatar[data-u="Carol"] { background: #e08a3c; }
+.avatar[data-u="Dean"] { background: #6a5acd; }
+.avatar[data-u="Elin"] { background: #e57f84; }
+
+.bubble-wrap { min-width: 0; max-width: 85%; }
+.meta { font-size: 13px; margin-bottom: 4px; display: flex; gap: 8px; align-items: baseline; }
+.meta span { font-size: 11px; color: #7a8594; }
+
+.bubble {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  background: #fff; padding: 10px 14px; border-radius: 0 14px 14px 14px;
+  box-shadow: 0 1px 2px rgba(20, 30, 50, 0.08);
+}
+.msg-text { overflow-wrap: anywhere; font-size: 14px; line-height: 1.4; }
+.mention { color: #1d5fd1; background: #e3edff; border-radius: 4px; padding: 0 3px; font-weight: 600; }
+
+.like {
+  flex: none; margin-left: auto; border: 1px solid #d9dfe8; background: #f6f8fb;
+  border-radius: 999px; padding: 3px 10px; cursor: pointer; font-size: 13px;
+}
+.like:hover { background: #e3edff; border-color: #9db9f2; }
+.like:focus-visible, .send:focus-visible, .icon-btn:focus-visible, .text-input:focus-visible {
+  outline: 2px solid #1d5fd1; outline-offset: 2px;
+}
+.count { font-weight: 600; margin-left: 2px; }
+
+.composer {
+  position: relative; display: flex; gap: 8px; align-items: center;
+  padding: 12px 16px; background: #fff; border-top: 1px solid #d9dfe8;
+}
+.text-input {
+  flex: 1; min-width: 0; padding: 11px 16px; border-radius: 999px;
+  border: 1px solid #c9d1dd; font-size: 14px; background: #f6f8fb;
+}
+.send {
+  border: 0; background: #1d5fd1; color: #fff; padding: 10px 20px;
+  border-radius: 999px; font-weight: 600; cursor: pointer;
+}
+.send:disabled { background: #a9bde6; cursor: not-allowed; }
+.icon-btn { border: 0; background: transparent; font-size: 22px; cursor: pointer; }
+
+.popup {
+  position: absolute; bottom: 64px; left: 16px; background: #1e2430; color: #fff;
+  border-radius: 10px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); z-index: 5;
+}
+.mention-list { list-style: none; margin: 0; padding: 6px; min-width: 150px; }
+.mention-list button {
+  width: 100%; text-align: left; background: transparent; border: 0; color: #fff;
+  padding: 8px 10px; border-radius: 6px; cursor: pointer; font-size: 14px;
+}
+.mention-list button:hover { background: #33405a; }
+
+.emoji-panel { width: 280px; padding: 10px; }
+.emoji-search {
+  width: 100%; padding: 8px 10px; border-radius: 6px; border: 1px solid #3a4558;
+  background: #141922; color: #fff; margin-bottom: 8px;
+}
+.emoji-grid { display: flex; flex-wrap: wrap; gap: 4px; max-height: 180px; overflow-y: auto; }
+.emoji-grid button { background: transparent; border: 0; font-size: 22px; cursor: pointer; border-radius: 6px; padding: 4px; }
+.emoji-grid button:hover { background: #33405a; }
+.muted { color: #9aa5b5; font-size: 13px; }
+
+@media (max-width: 520px) {
+  .thread { padding: 14px 12px; }
+  .bubble-wrap { max-width: 92%; }
+}
